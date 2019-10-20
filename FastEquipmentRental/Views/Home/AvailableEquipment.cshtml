@@ -1,0 +1,31 @@
+﻿
+@model IEnumerable<FastEquipmentRental.Models.Equipment>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Available Equipment</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var equipment in Model)
+        {
+            <tr>
+                <td>@equipment.Id</td>
+                <td>@equipment.Type</td>
+                <td>@equipment.Description</td>
+                <td>@equipment.Availability</td>
+            </tr>
+        }
+    </tbody>
+</table>

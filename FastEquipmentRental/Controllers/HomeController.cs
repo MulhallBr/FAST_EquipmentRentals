@@ -1,6 +1,7 @@
-﻿
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using FastEquipmentRental.Models;
+using System.Linq;
 
 namespace FastEquipmentRental.Controllers
 {
@@ -8,7 +9,7 @@ namespace FastEquipmentRental.Controllers
     {
         public IActionResult Index()
         {
-            return View("Index");
+            return View();
         }
 
         [HttpGet]
@@ -29,6 +30,16 @@ namespace FastEquipmentRental.Controllers
             {
                 return View();
             }
+        }
+
+        public IActionResult AllEquipment()
+        {
+            return View(Repository.Equipments);
+        }
+
+        public IActionResult AvailableEquipment()
+        {
+            return View(Repository.Equipments.Where(e => e.Availability == true));
         }
     }
 }
