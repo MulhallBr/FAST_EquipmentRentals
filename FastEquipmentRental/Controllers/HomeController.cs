@@ -20,9 +20,15 @@ namespace FastEquipmentRental.Controllers
         [HttpPost]
         public IActionResult RequestForm(EquipmentRequest equipmentRequest)
         {
-            // Store requests from users
-            Repository.AddRequest(equipmentRequest);
-            return View("Confirmation", equipmentRequest);
+            if (ModelState.IsValid)
+            {
+                // Store requests from users
+                //Repository.AddRequest(equipmentRequest);
+                return View("Confirmation", equipmentRequest);
+            } else
+            {
+                return View();
+            }
         }
     }
 }

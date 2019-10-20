@@ -9,6 +9,9 @@
 <h1>Equipment Request Form</h1>
 
 <form asp-action="RequestForm" method="post">
+
+    <div asp-validation-summary="All"></div>
+
     <div class="form-group">
         <label asp-for="Name">Full Name</label>
         <input asp-for="Name" class="form-control" placeholder="Enter name">
@@ -45,8 +48,8 @@
     <div class="form-group">
         <label>Equipment Type</label>
 
-        <select class="custom-select">
-            <option selected>Select Equipment Type</option>
+        <select required type="custom-select">
+            <option selected disabled value="">Select Equipment Type</option>
             <option value="1">Laptop</option>
             <option value="2">Tablet</option>
             <option value="3">Phone</option>
@@ -55,13 +58,13 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Details" >Request Details</label>
+        <label asp-for="Details">Request Details</label>
         <textarea asp-for="Details" class="form-control" rows="3"></textarea>
     </div>
 
     <div class="form-group">
         <label asp-for="Days">Duration (Days)</label>
-        <input asp-for="Days" class="form-control" aria-describedby="durationHelp" >
+        <input asp-for="Days" class="form-control" aria-describedby="durationHelp">
         <small id="durationHelp" class="form-text text-muted">Please enter the number of days you'd like to rent the equipment for.</small>
     </div>
 
