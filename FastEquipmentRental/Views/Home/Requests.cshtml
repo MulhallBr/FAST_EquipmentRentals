@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<FastEquipmentRental.Models.EquipmentRequest>
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Requests";
+}
+
+
+
+<div class="panel-body">
+    <h2>All Requests</h2>
+
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Equipment Type</th>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td><a asp-action="RequestDetails">@request.Id</a></td>
+                    <td>@request.EqType</td>
+                    <td>@request.Name</td>
+                    <td>@request.Role</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

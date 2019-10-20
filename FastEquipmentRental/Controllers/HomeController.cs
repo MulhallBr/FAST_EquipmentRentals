@@ -24,7 +24,7 @@ namespace FastEquipmentRental.Controllers
             if (ModelState.IsValid)
             {
                 // Store requests from users
-                //Repository.AddRequest(equipmentRequest);
+                Repository.AddRequest(equipmentRequest);
                 return View("Confirmation", equipmentRequest);
             } else
             {
@@ -40,6 +40,16 @@ namespace FastEquipmentRental.Controllers
         public IActionResult AvailableEquipment()
         {
             return View(Repository.Equipments.Where(e => e.Availability == true));
+        }
+
+        public IActionResult Requests()
+        {
+            return View(Repository.Requests);
+        }
+
+        public IActionResult RequestDetails()
+        {
+            return View();
         }
     }
 }

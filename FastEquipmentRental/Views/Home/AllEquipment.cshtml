@@ -3,29 +3,33 @@
 
 @{
     Layout = "_Layout";
+    ViewBag.Title = "All Equipment";
 }
 
-<h2>All Equipment</h2>
+<div class="panel-body">
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Availability</th>
-        </tr>
-    </thead>
-    <tbody>
+    <h2>All Equipment</h2>
 
-        @foreach (var equipment in Model)
-        {
-        <tr>
-            <td>@equipment.Id</td>
-            <td>@equipment.Type</td>
-            <td>@equipment.Description</td>
-            <td>@equipment.Availability</td>
-        </tr>
-        }
-    </tbody>
-</table>
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var equipment in Model)
+            {
+                <tr>
+                    <td>@equipment.Id</td>
+                    <td>@equipment.Type</td>
+                    <td>@equipment.Description</td>
+                    <td>@equipment.Availability</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
