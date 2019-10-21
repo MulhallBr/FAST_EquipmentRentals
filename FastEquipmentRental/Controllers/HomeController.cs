@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using FastEquipmentRental.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
+using System.Diagnostics;
 
 namespace FastEquipmentRental.Controllers
 {
@@ -15,20 +17,41 @@ namespace FastEquipmentRental.Controllers
         [HttpGet]
         public IActionResult RequestForm()
         {
-            return View();
+            var x = new EquipmentRequest();
+            x.Types = new List<SelectListItem>
+            {
+                new SelectListItem {Text = "Laptop", Value = "Laptop"},
+                new SelectListItem {Text = "Tablet", Value = "Tablet"},
+                new SelectListItem {Text = "Phone", Value = "Phone"},
+                new SelectListItem {Text = "Other", Value = "Other"}
+            };
+
+            return View(x);
         }
 
         [HttpPost]
         public IActionResult RequestForm(EquipmentRequest equipmentRequest)
         {
+            Debug.WriteLine("Checking");
+            Debug.WriteLine(equipmentRequest.EqType);
             if (ModelState.IsValid)
             {
                 // Store requests from users
+                Debug.WriteLine("Request Being Added");
                 Repository.AddRequest(equipmentRequest);
                 return View("Confirmation", equipmentRequest);
             } else
             {
-                return View();
+                var x = new EquipmentRequest();
+                x.Types = new List<SelectListItem>
+                {
+                    new SelectListItem {Text = "Laptop", Value = "Laptop"},
+                    new SelectListItem {Text = "Tablet", Value = "Tablet"},
+                    new SelectListItem {Text = "Phone", Value = "Phone"},
+                    new SelectListItem {Text = "Other", Value = "Other"}
+                };
+
+                return View(x);
             }
         }
 
@@ -47,9 +70,9 @@ namespace FastEquipmentRental.Controllers
             return View(Repository.Requests);
         }
 
-        public IActionResult RequestDetails()
+        public IActionResult RequestDetails(int id)
         {
-            return View();
+            return View(Repository.Requests.Where(r => r.Id == id));
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace FastEquipmentRental.Models
@@ -23,7 +24,9 @@ namespace FastEquipmentRental.Models
         public string Phone { get; set; }
 
         public string Role { get; set; }
-        
+
+        public List<SelectListItem> Types { get; set; }
+
         public string EqType { get; set; }
 
         [Required(ErrorMessage = "Please enter rental details")]

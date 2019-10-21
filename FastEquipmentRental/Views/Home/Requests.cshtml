@@ -9,28 +9,33 @@
 
 
 <div class="panel-body">
-    <h2>All Requests</h2>
+    <form asp-action="Requests" method="post">
 
-    <table class="table table-sm table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Equipment Type</th>
-                <th>Name</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
+        <h2>All Requests</h2>
 
-            @foreach (var request in Model)
-            {
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
                 <tr>
-                    <td><a asp-action="RequestDetails">@request.Id</a></td>
-                    <td>@request.EqType</td>
-                    <td>@request.Name</td>
-                    <td>@request.Role</td>
+                    <th>ID</th>
+                    <th>Equipment Type</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Info</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.Id</td>
+                        <td>@request.EqType</td>
+                        <td>@request.Name</td>
+                        <td>@request.Role</td>
+                        <td><a href='/Home/RequestDetails/@request.Id'> Details</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
 </div>

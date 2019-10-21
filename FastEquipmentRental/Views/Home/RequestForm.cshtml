@@ -32,7 +32,7 @@
         <label>Role</label>
 
         <select required asp-for="Role" type="custom-select">
-            <option selected disabled value="">Select Equipment Type</option>
+            <option selected disabled value="">Select Role</option>
             <option value="Student">Student</option>
             <option value="Professor">Professor</option>
         </select>
@@ -40,13 +40,10 @@
 
     <div class="form-group">
         <label>Equipment Type</label>
+        <select required asp-for="EqType" asp-items="@Model.Types" type="custom-select">
 
-        <select required asp-for="EqType" type="custom-select">
             <option selected disabled value="">Select Equipment Type</option>
-            <option value="Laptop">Laptop</option>
-            <option value="Tablet">Tablet</option>
-            <option value="Phone">Phone</option>
-            <option value="Other">Other</option>
+
         </select>
     </div>
 

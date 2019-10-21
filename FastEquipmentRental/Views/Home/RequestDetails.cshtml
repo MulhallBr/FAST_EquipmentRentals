@@ -8,7 +8,7 @@
 
 <h2>Request Details</h2>
 
-<table>
+<table class="table table-sm table-striped table-bordered">
     <thead>
         <tr>
             <th>ID</th>
@@ -17,14 +17,31 @@
             <th>Email</th>
             <th>Phone Number</th>
             <th>Role</th>
-            <th>Details</th>
             <th>Days</th>
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
+        <tr>
+            @foreach (var request in Model)
+            {
+                <td>@request.Id</td>
+                <td>@request.EqType</td>
+                <td>@request.Name</td>
+                <td>@request.Email</td>
+                <td>@request.Phone</td>
+                <td>@request.Role</td>
+                <td>@request.Days</td>
+            }
+        </tr>
     </tbody>
 </table>
+
+<br />
+<h3>Description</h3>
+@foreach (var request in Model)
+{
+    <p>@request.Details</p>
+}
+
+<button type="button" class="btn btn-success">Accept</button>
+<button type="button" class="btn btn-secondary">Decline</button>
